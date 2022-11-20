@@ -1,11 +1,19 @@
+:root {
+  --fields-dark:#DCDCDC;
+  --fields-light:#F5F5F5;
+}
+
 * {
     font-family: 'Arial';
+    font-size: 100%;
 }
-#header {
-    text-decoration: dotted underline;
+body {
+    font-size: 1em;
 }
-#search {
-    margin-top: 20vh;
+textarea {
+    font-size: 0.95em;
+}
+header, form, #progress-section {
     margin-left: auto;
     margin-right: auto;
     max-width: 1024px;
@@ -13,46 +21,90 @@
 }
 fieldset {
     border: none;
+    line-height: 2.2em;
+}
+fieldset > legend {
+  width: auto;
+  margin-left: 0;
+  margin-right: auto;
+  font-weight:bold;
+}
+select, input {
+    margin-right: 10px;
+    padding: 2px;
+}
+input:disabled {
+  cursor:auto;
+}
+input[type=submit] {
+    cursor: pointer;
+    background-color: #666;
+    color: white;
+}
+input[type=checkbox] {
+    cursor: pointer;
+    margin-right: 0px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+input#seed {
+    margin-right: 0px;
 }
 div {
     padding: 10px 10px 10px 10px;
 }
-#fieldset-search {
+header {
+    margin-bottom: 16px;
+}
+header h1 {
+    margin-bottom: 0;
+    font-size: 2em;
+}
+#search-box {
     display: flex;
 }
-#scaling-inprocess-message{
+#scaling-inprocess-message {
     font-weight: bold;
     font-style: italic;
     display: none;
 }
 #prompt {
     flex-grow: 1;
-
-    border-radius: 20px 0px 0px 20px;
     padding: 5px 10px 5px 10px;
-    border: 1px solid black;
-    border-right: none;
+    border: 1px solid #999;
     outline: none;
 }
 #submit {
-    border-radius: 0px 20px 20px 0px;
     padding: 5px 10px 5px 10px;
-    border: 1px solid black;
+    border: 1px solid #999;
 }
-#reset-all {
+#reset-all, #remove-image {
+    margin-top: 12px;
+    font-size: 0.8em;
     background-color: pink;
+    border: 1px solid #999;
+    border-radius: 4px;
 }
 #results {
     text-align: center;
-//    max-width: 1024px;
     margin: auto;
     padding-top: 10px;
 }
-#results img {
-    cursor: pointer;
-    height: 30vh;
-    border-radius: 5px;
+#results figure {
+    display: inline-block;
     margin: 10px;
+}
+#results figcaption {
+    font-size: 0.8em;
+    padding: 3px;
+    color: #888;
+    cursor: pointer;
+}
+#results img {
+    border-radius: 5px;
+    object-fit: contain;
+    background-color: var(--fields-dark);
 }
 #fieldset-config {
     line-height:2em;
@@ -63,8 +115,15 @@ input[type="number"] {
 #seed {
     width: 150px;
 }
-hr {
-//    width: 200px;
+button#reset-seed {
+    font-size: 1.7em;
+    background: #efefef;
+    border: 1px solid #999;
+    border-radius: 4px;
+    line-height: 0.8;
+    margin: 0 10px 0 0;
+    padding: 0 5px 3px;
+    vertical-align: middle;
 }
 label {
     white-space: nowrap;
@@ -75,23 +134,46 @@ label {
 #progress-image {
     width: 30vh;
     height: 30vh;
+    object-fit: contain;
+    background-color: var(--fields-dark);
 }
 #cancel-button {
     cursor: pointer;
     color: red;
 }
 #txt2img {
-    background-color: #DCDCDC;
+    background-color: var(--fields-dark);
+}
+#variations {
+    background-color: var(--fields-light);
+}
+#initimg {
+    background-color: var(--fields-dark);
 }
 #img2img {
-    background-color: #F5F5F5;
+    background-color: var(--fields-light);
 }
-#gfpgan {
-    background-color: #DCDCDC;
+#initimg > :not(legend) {
+  background-color: var(--fields-light);
+  margin: .5em;
+}
+
+#postprocess, #initimg {
+    display:flex;
+    flex-wrap:wrap;
+    padding: 0;
+    margin-top: 1em;
+    background-color: var(--fields-dark);
+}
+#postprocess > fieldset, #initimg > * {
+    flex-grow: 1;
+}
+#postprocess > fieldset {
+  background-color: var(--fields-dark);
 }
 #progress-section {
-    background-color: #F5F5F5;
+    background-color: var(--fields-light);
 }
-#about {
-    background-color: #DCDCDC;
+#no-results-message:not(:only-child) {
+    display: none;
 }
